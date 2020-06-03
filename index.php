@@ -8,9 +8,10 @@
 <div class="container">
     <br>
     <h4>Data Penilaian Siswa</h4>
-<?php
+	<?php
 
     include "koneksi.php";
+    session_start();
 
     //Cek apakah ada nilai dari method GET dengan nama id_siswa
     if (isset($_GET['id_siswa'])) {
@@ -29,7 +30,8 @@
 
             }
         }
-?>
+
+	?>
 
 
     <table class="table table-bordered table-hover">
@@ -82,6 +84,7 @@
     </table>
     <a href="create.php" class="btn btn-primary" role="button">Tambah Data</a>
     <a href="cetak.php" class="btn btn-primary" role="button">Cetak Data</a>
+	<a href="logout.php" class="btn btn-primary" role="button">Logout</a>
 
 </div>
 </body>
