@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 07:08 AM
+-- Generation Time: Jun 10, 2020 at 02:00 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -49,7 +49,6 @@ INSERT INTO `admin` (`id_user`, `username`, `password`) VALUES
 CREATE TABLE `nilai` (
   `id_siswa` int(10) NOT NULL,
   `kode_pelajaran` int(10) NOT NULL,
-  `nilai_tugas` int(3) NOT NULL,
   `nilai_uts` int(3) NOT NULL,
   `nilai_uas` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -58,9 +57,9 @@ CREATE TABLE `nilai` (
 -- Dumping data for table `nilai`
 --
 
-INSERT INTO `nilai` (`id_siswa`, `kode_pelajaran`, `nilai_tugas`, `nilai_uts`, `nilai_uas`) VALUES
-(2009001, 9002, 80, 82, 90),
-(2011001, 9001, 90, 90, 89);
+INSERT INTO `nilai` (`id_siswa`, `kode_pelajaran`, `nilai_uts`, `nilai_uas`) VALUES
+(2009001, 9002, 82, 90),
+(2011001, 9001, 89, 99);
 
 -- --------------------------------------------------------
 
@@ -98,8 +97,30 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id_siswa`, `nama_siswa`, `kelas_siswa`) VALUES
-(2009001, 'Putra T', 9),
-(2011001, 'Isna O', 11);
+(2009001, 'Putra T', 10),
+(2011001, 'Isna O', 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tugas`
+--
+
+CREATE TABLE `tugas` (
+  `id_siswa` int(10) NOT NULL,
+  `kode_pelajaran` int(10) NOT NULL,
+  `tugas1` int(3) NOT NULL,
+  `tugas2` int(3) NOT NULL,
+  `tugas3` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tugas`
+--
+
+INSERT INTO `tugas` (`id_siswa`, `kode_pelajaran`, `tugas1`, `tugas2`, `tugas3`) VALUES
+(2009001, 9001, 89, 88, 90),
+(2011001, 9002, 80, 80, 90);
 
 --
 -- Indexes for dumped tables
@@ -129,6 +150,12 @@ ALTER TABLE `pelajaran`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`id_siswa`);
+
+--
+-- Indexes for table `tugas`
+--
+ALTER TABLE `tugas`
+  ADD PRIMARY KEY (`id_siswa`,`kode_pelajaran`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
